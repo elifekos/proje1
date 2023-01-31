@@ -1,0 +1,7 @@
+SELECT id, name, Phone from Account
+
+
+
+select id, name, mailingcity from contact where name like '%vi%'
+
+SELECT Id, name, phone, industry, Type FROM Account where industry = 'energy' limit 1
