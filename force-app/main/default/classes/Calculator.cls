@@ -1,5 +1,5 @@
 public  class Calculator {
-    //parameter less method
+    //parameter
     public void welcomeMessage(){
         system.debug('welcome to apex calc; UPDATED');
     }
