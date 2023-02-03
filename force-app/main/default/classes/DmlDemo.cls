@@ -34,4 +34,24 @@ public class DmlDemo {
       update ac;
       system.debug('after updating '+ ac);
     }
+    public static void dmlUpdateDemo_stndObj3(){
+      //get record from org
+      account acc = [select id, name from account where name = 'SoftInnovas' limit 1];
+
+      //update name
+      acc.Name = 'SoftInnovas Inc.';
+      acc.Phone = '9556789451';
+      // update dml
+      update acc;
+    }
+    public static void dmlInsertDemo_stndObj2(){
+      account ac = [select id, name from account where name like 'SoftInnovas%' limit 1];  
+      //create contact instance
+      Contact c = new Contact();
+      c.LastName = 'Biden';
+      //related field id
+      c.accountId = ac.Id;
+      //create contact record
+      insert c;
+      }
 }
