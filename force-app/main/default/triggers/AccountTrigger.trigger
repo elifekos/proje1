@@ -3,9 +3,21 @@ trigger AccountTrigger on Account (before insert, before update, after insert, a
     if (Trigger.isBefore) {
         AccountTriggerHandler.updateDescription(Trigger.New, Trigger.Old, Trigger.NewMap, Trigger.OldMap);
     }
+    if(Trigger.isAfter&& trigger.isUpdate){
+        //call VIP UPDATE METHOD
+        AccountTriggerHandler.updateVIPForAllContact(Trigger.New, Trigger.Old, Trigger.NewMap, Trigger.OldMap);
+    }
+}
+
+
+
+
+
+
+
     
-    // Map<id, account> trgNewMap = trigger.newMap;//key = ID, value = record.
-    // Map<id, account> trgOldMap = trigger.oldMap;
+    /* Map<id, account> trgNewMap = trigger.newMap;//key = ID, value = record.
+     Map<id, account> trgOldMap = trigger.oldMap;*/
 
 
     // if (Trigger.isBefore && Trigger.isUpdate) {
@@ -72,7 +84,7 @@ trigger AccountTrigger on Account (before insert, before update, after insert, a
         
     // }
 
-    system.debug('==== trigger end ====');
+    //system.debug('==== trigger end ====');
     /*
     if (Trigger.isBefore && Trigger.isInsert) {
         //old is null in insert
@@ -184,5 +196,6 @@ trigger AccountTrigger on Account (before insert, before update, after insert, a
         system.debug('after insert account trigger called.');
     }
     */
+   /*if(trigger.isAfter) 
+   AccountHandler_assg.accountCreatContact(trigger.New, trigger.Old, trigger.NewMap, trigger.OldMap);*/
    
-}
