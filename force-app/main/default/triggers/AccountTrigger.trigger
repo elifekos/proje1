@@ -1,11 +1,21 @@
 trigger AccountTrigger on Account (before insert, before update, after insert, after update) {
     system.debug('--- trigger start ----');
+
+     //check if account trigger is disabled , then return==> false yani unchecked trigger(custom setting account trigger)
+     TriggerSwitch__c ts = TriggerSwitch__c.getInstance('account');
+     if(!ts.enabled__c){
+         return;
+     }
+
     if (Trigger.isBefore) {
         AccountTriggerHandler.updateDescription(Trigger.New, Trigger.Old, Trigger.NewMap, Trigger.OldMap);
     }
-    if(Trigger.isAfter&& trigger.isUpdate){
+    if(Trigger.isBefore&& trigger.isUpdate){
         //call VIP UPDATE METHOD
         AccountTriggerHandler.updateVIPForAllContact(Trigger.New, Trigger.Old, Trigger.NewMap, Trigger.OldMap);
+    }
+   if(trigger.isBefore&& trigger.isInsert){
+        AccountTriggerHandler.createContact(Trigger.New);
     }
 }
 

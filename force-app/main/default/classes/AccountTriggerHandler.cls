@@ -81,4 +81,30 @@ public static void futureMethodNumOfCont(set<id> accountIds){
         update accountsToUpdate;
         
  }
-}
+ public static void createContact(list<account> accTriggerNew){
+        try {
+                list<Contact> newContact = new  list<Contact>();
+                for(account eachAcc : accTriggerNew){
+                        contact c = new contact();
+                        c.LastName =eachAcc.Name+ ' New Contact';
+                        //c.Status__c = 'New';
+                        c.AccountId = eachAcc.id;
+                        newContact.add(c);
+                }
+                if(newContact !=null){
+                        insert newContact;
+                }
+                
+        } catch (Exception ex) {
+              
+                for(account eachAcc : accTriggerNew){
+                       
+                 eachAcc.addError('Status is missing; status is required field');
+                        
+                        
+                }
+                
+        }
+        }
+ }
+

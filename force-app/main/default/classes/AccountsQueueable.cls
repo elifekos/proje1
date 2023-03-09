@@ -1,5 +1,5 @@
 public  class AccountsQueueable  implements Queueable{
-    list<account> allAccounts =new list<account>();
+   public list<account> allAccounts =new list<account>();
     //constructor
     public AccountsQueueable(list<account> accs) {
         allAccounts = accs;

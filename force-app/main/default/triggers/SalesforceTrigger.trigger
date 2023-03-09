@@ -1,4 +1,10 @@
 trigger SalesforceTrigger on Salesforce_Project__c (before insert, after insert, before update, after update) {
+    //check if sasalesforceprojects trigger is enabled 
+    TriggerSwitch__c ts = TriggerSwitch__c.getInstance('salesforce_project__c');
+    if(!ts.enabled__c){
+        return;
+    }
+
 
     if (Trigger.isAfter && Trigger.isInsert) {
         system.debug('calling future method now');

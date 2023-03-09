@@ -1,15 +1,15 @@
 public with sharing class ContactTriggerHandler {
-    /*public static void contactValidation1(List<Contact> conTriggerNew,
+    public static void contactValidation1(List<Contact> conTriggerNew,
                                         List<Contact> conTriggerOld,
                                         Map<id, Contact> conTriggerNewMap,
                                         Map<id, Contact> cOnTriggerOldMap) {
-                                            */
+                                            
         //Validate if contact s lead source was partner referrral
         //one by one contact using for each  loop of trigger.new
         //why in trigger.new?
           //addError can be done on trigger.new and trigger.newMap only
           //addError NOT BE POSSIBLE trigger.old, and trigger.oldMap
-        /*for(contact eachContact : conTriggerNew){
+        for(contact eachContact : conTriggerNew){
               //check if LeadSource WAS Partner Referral, 
                 //so we get the OLD record from oldMap to check leadsource field value
             //allows to change leadsource
@@ -20,19 +20,21 @@ public with sharing class ContactTriggerHandler {
         }
 
     }
-    */
-   /* public static void contactValidation2(List<Contact> conTriggerNew,
+    
+    public static void contactValidation2(List<Contact> conTriggerNew,
                                             List<Contact> conTriggerOld,
                                             Map<id, Contact> conTriggerNewMap,
                                             Map<id, Contact> cOnTriggerOldMap){
+                                               
+         string  validationError = system.label.ContactValidation2;
         for(contact eachContact : conTriggerNew){
             //check if leadSource is changed
             if(eachContact.LeadSource != cOnTriggerOldMap.get(eachContact.Id).LeadSource){
-                eachContact.LeadSource.addError('CANNOT CHANGE LEAD SOURCE.PLEASE USER!');
+                eachContact.LeadSource.addError(validationError);
             }
         }                                       
 
-    }*/
+    }
     public static void rollUpSummary(List<Contact> conTriggerNew,
                                         List<Contact> conTriggerOld,
                                         Map<id, Contact> conTriggerNewMap,
