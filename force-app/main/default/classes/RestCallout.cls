@@ -5,7 +5,7 @@ public with sharing class RestCallout {
     public static HttpResponse getAnimal(){
         //1- Prepare HttpRequest and wrap all the necessary data in it.
         HttpRequest request = new  HttpRequest();
-        request.setEndpoint('callout:Heroku_App/animals');
+        request.setEndpoint('https://th-apex-http-callout.herokuapp.com/animals');
         request.setMethod('GET');
 /*
         //bu kisim kullanisli olmadigi icin named credentials ten olusturuyoruz new legacy kismindan
@@ -30,7 +30,7 @@ public with sharing class RestCallout {
 
     }
 
-    public static HttpResponse getAirlines(){
+   /* public static HttpResponse getAirlines(){
          //1- Prepare HttpRequest and wrap all the necessary data in it.
          HttpRequest request = new HttpRequest();
          request.setEndpoint('https://api.instantwebtools.net/v1/airlines');
@@ -48,7 +48,7 @@ public with sharing class RestCallout {
             system.debug(jsonString);
         } 
         return response;
-    }
+    }*/
 
     public static HttpResponse getEmployees(){
          //1- Prepare HttpRequest and wrap all the necessary data in it.
@@ -147,7 +147,7 @@ public with sharing class RestCallout {
         return response;
     }
 
-    public static HttpResponse deleteEmployee  (){
+    public static HttpResponse deleteEmployee(){
         //endpoint: https://api.onlinewebtutorblog.com/employees/1
         //http method : Delete
         HttpRequest request = new HttpRequest();
@@ -160,14 +160,18 @@ public with sharing class RestCallout {
           //SEND REQUEST AND HANDLE RESPONSE
           HttpResponse response = http.send(request);
 
-          if(response.getStatusCode()==200){
+          if(response.getStatusCode() == 200){
             String jsonString = response.getBody();
-            EmployeeResponse emr =  (EmployeeResponse)JSON.deserialize(jsonString, EmployeeResponse.class);
-            system.debug(emr.msg);
-          }
+            System.debug(jsonString);
+
+            EmployeeResponse emr = (EmployeeResponse) JSON.deserialize(jsonString, EmployeeResponse.class);
+
+            System.debug(emr.msg);
+        }
                 
           return response;
     }
+
 
 
     
