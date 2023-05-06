@@ -1,0 +1,49 @@
+<template>
+    <lightning-card    title =" Record Form Lead">
+        <div class="slds-var-m-around_medium">
+              <!--Lightning Record Form-->
+            <lightning-record-form
+            object-api-name={objName}
+            record-id={recordId}
+            layout-type="Full"
+            mode="view"
+            columns ="5">
+            </lightning-record-form>
+
+        </div>
+    </lightning-card>
+
+         <!--Lightning Record Edit Form-->
+         <lightning-card    title=" Record Edit Form Lead">
+         <lightning-record-edit-form
+         record-id={recordId}
+         object-api-name={objName}>
+         <div class="slds-grid">
+            <div class="slds-col">
+              <span> <lightning-input-field field-name={fields.LastName}></lightning-input-field></span>
+            </div>
+            <div class="slds-col">
+              <span>
+                <lightning-input-field field-name={fields.Status}></lightning-input-field>
+                <lightning-input-field field-name={fields.Company}></lightning-input-field></span>
+            </div>
+        </div>
+        
+        <div class="slds-align_absolute-center">
+          <lightning-button label="Cancel" type="reset" variant="neutral" class="slds-var-m-right_x-small"></lightning-button>
+          <lightning-button label="Save" type="submit" variant="brand"></lightning-button>
+          </div>
+        </lightning-record-edit-form>
+
+      </lightning-card>
+      
+      
+  </template>
+
+        
+        
+
+
+            
+
+     

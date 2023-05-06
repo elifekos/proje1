@@ -1,0 +1,20 @@
+<template>
+    <lightning-card    title=" LWC Template Looping  Daily Assignment">
+        <div class="slds-var-m-around_medium">
+            <template for:each={animals} for:item="animal" for:index="indx">
+               <div key={animal}>{animal} {indx} </div>
+            </template>
+        </div>
+
+        <div class="slds-var-m-around_medium">
+            <template for:each={toyotaCars} for:item="car" >
+               <div key={car}>Model : {car.Model}</div>
+               <div key={car}>Model Year : {car.ModelYear}</div>
+               <div key={car}>Powertrain : {car.Powertrain}</div><br key = {car}>
+            </template>
+        </div>
+     </lightning-card>
+</template>
+               
+            
+            

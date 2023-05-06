@@ -1,0 +1,27 @@
+<template>
+    <lightning-card title="getPicklistValuesByRecordType-Contact Assgnment">
+        <div class="slds-var-m-around_medium">
+            <lightning-combobox
+            label="Level - Contact"
+            options={levelOptions}
+            onchange={handleChange_1}>
+            </lightning-combobox><br/>
+            <template lwc:if={selectedLevel}>
+                <div><b>Selected Level is {selectedLevel}</b></div>
+            </template>
+        </div>
+
+        <div class="slds-var-m-around_medium">
+            <lightning-combobox
+            label="LeadSource - Contact"
+            options={leadSourceOptions}
+            onchange={handleChange_2}>
+            </lightning-combobox><br/>
+            <template lwc:if={selectedLeadSource}>
+                <div><b>Selected Lead Source  is {selectedLeadSource}</b></div>
+            </template>
+        </div>
+    
+        </lightning-card>
+    
+</template>
